@@ -26,6 +26,11 @@ const P8 = {
     awake : true,
     time_left:10,
     ticker:undefined,
+    getBattery: (v)=>{
+    	var v = P8.batV();
+    	v = v<3.7?3.7:v;
+    	return Math.floor((v-3.7)*200);
+    },
     buzz: (v)=>{
         if (!P8.VIBRATE) return;
         v = v? v : 100;
@@ -36,8 +41,12 @@ const P8 = {
             setTimeout(()=>{D16.reset();},v);
         }
     },
-    batV: () => {
-        return 7.1 * analogRead(D31);
+    batV: (s) => { //battery voltage function from enaon https://github.com/enaon/eucWatch/
+      let v=7.1*analogRead(D31);
+      if (s) v=(v*100-345)*1.43|0; //if (v>=100) v=100;
+      let hexString = ("0x"+(0x50000700+(D31*4)).toString(16));
+      poke32(hexString,2); // disconnect pin for power saving, otherwise it draws 70uA more 
+      return v;
     },
     isPower:()=>{return D19.read();},
     setLCDTimeout:(v)=>{P8.ON_TIME=v<5?5:v;},

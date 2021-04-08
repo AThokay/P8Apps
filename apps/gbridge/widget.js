@@ -62,10 +62,10 @@
             const fitFont = (prop,max) => {
               if (!(prop in state.musicInfo)) return max;
               let size = Math.floor(w/(state.musicInfo[prop].length*6));
-              if (size<1) {size=1}
-              if (size>max) {size=max}
+              if (size<1) size=1;
+              if (size>max) size=max;
               return size;
-            }
+            };
             let aSize = fitFont('artist',3);
             // TODO: split long title over multiple lines instead
             let tSize = fitFont('track',2);
@@ -165,13 +165,13 @@
         break;
       case "musicstate":
         if (state.music !== event.state) {
-          state.music = event.state
+          state.music = event.state;
           updateMusic({on: true});
         }
         break;
       case "call":
         var note = { size: 55, title: event.name, id: "call",
-                     body: event.number, icon:require("heatshrink").decompress(atob("jEYwIMJj4CCwACJh4CCCIMOAQMGAQMHAQMDAQMBCIMB4PwgHz/EAn4CBj4CBg4CBgACCAAw="))}
+                     body: event.number, icon:require("heatshrink").decompress(atob("jEYwIMJj4CCwACJh4CCCIMOAQMGAQMHAQMDAQMBCIMB4PwgHz/EAn4CBj4CBg4CBgACCAAw="))};
         if (event.cmd === "incoming") {
           require("notify").show(note);
           P8.buzz();
@@ -208,7 +208,7 @@
 
   TC.on("swipe", (dir) => {
     if (state.music === "play") {
-      const command = dir > 0 ? "next" : "previous"
+      const command = dir > 0 ? "next" : "previous";
       gbSend({ t: "music", n: command });
     }
   });
@@ -241,7 +241,7 @@
   }
 
   function sendBattery() {
-    gbSend({ t: "status", bat: E.getBattery() });
+    gbSend({ t: "status", bat: P8.getBattery() });
   }
 
   // Send a summary of activity to Gadgetbridge

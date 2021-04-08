@@ -8,11 +8,6 @@
     'low':0xF800, // "Red"
   }
   const SETTINGS_FILE = 'widbatpc.json'
-  E.getBattery = function (){
-    var v = P8.batV();
-    v = v<3.7?3.7:v;
-    return Math.floor((v-3.7)*200);
-  }
 
   let settings
   function loadSettings() {
@@ -60,7 +55,7 @@
     var w = 40;
     if (P8.isPower() && setting('charger'))
       w += 16;
-    if (E.getBattery() > setting('hideifmorethan'))
+    if (P8.getBattery() > setting('hideifmorethan'))
       w = 0;
     var changed = WIDGETS["batpc"].width != w;
     WIDGETS["batpc"].width = w;
@@ -72,7 +67,7 @@
     // else...
     var s = 39;
     var x = this.x, y = this.y;
-    const l = E.getBattery(),
+    const l = P8.getBattery(),
       c = levelColor(l);
     const xl = x+4+l*(s-12)/100
 
