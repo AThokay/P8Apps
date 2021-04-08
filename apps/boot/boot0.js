@@ -32,7 +32,6 @@ const P8 = {
     	return Math.floor((v-3.7)*200);
     },
     buzz: (v)=>{
-        if (!P8.VIBRATE) return;
         v = v? v : 100;
         if (v<=50){
             digitalPulse(D16,true,v);
