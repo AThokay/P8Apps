@@ -122,3 +122,7 @@ P8.ticker = setInterval(P8.tick,1000);
 P8.POWER=D19.read();
 watchBat();
 
+//load app boot.js in boot.
+require('Storage').list(/\.boot\.js/).forEach(bootFile=>{
+  eval(require('Storage').read(bootFile));
+});

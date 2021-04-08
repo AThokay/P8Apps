@@ -1,4 +1,7 @@
 (() => {
+var STOR = require("Storage");
+eval(STOR.read("alarm.boot.js"));
+eval(STOR.read("alarm.js"));
   var alarms = require('Storage').readJSON('alarm.json',1)||[];
   alarms = alarms.filter(alarm=>alarm.on);
   if (!alarms.length) return; // no alarms, no widget!
