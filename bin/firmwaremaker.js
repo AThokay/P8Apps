@@ -26,7 +26,7 @@ global.Const = {
   SINGLE_APP_ONLY : false,
 };
 
-var AppInfo = require(ROOTDIR+"/core/js/appinfo.js");
+var AppInfo = require(ROOTDIR+"/js/appinfo.js");
 var appjson = JSON.parse(fs.readFileSync(APPJSON).toString());
 var appfiles = [];
 

@@ -13,8 +13,8 @@ for Noble.
 var SETTINGS = {
   pretokenise : true
 };
-var Utils = require("../core/js/utils.js");
-var AppInfo = require("../core/js/appinfo.js");
+var Utils = require("../js/utils.js");
+var AppInfo = require("../js/appinfo.js");
 var noble;
 try {
   noble  = require('@abandonware/noble');
