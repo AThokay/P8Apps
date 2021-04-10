@@ -4,7 +4,7 @@ let appSortInfo = {}; // list of data to sort by, from appdates.csv { created, m
 let files = []; // list of files on the Espruimo Device
 let DEFAULTSETTINGS = {
   pretokenise : true,
-  favourites : ["boot","launch","setting","cliock"]
+  favourites : ["boot","launch","setting"]
 };
 let SETTINGS = JSON.parse(JSON.stringify(DEFAULTSETTINGS)); // clone
 let DEVICE_ID; // The Espruino device ID of this device, eg. BANGLEJS
@@ -182,7 +182,7 @@ function changeAppFavourite(favourite, app) {
   if (favourite) {
     SETTINGS.favourites = SETTINGS.favourites.concat([app.id]);
   } else {
-    if ([ "boot","setting","launch","cliock"].includes(app.id)) {
+    if ([ "boot","setting"].includes(app.id)) {
       showToast(app.name + ' is required, can\'t remove it' , 'warning');
     }else {
       SETTINGS.favourites = SETTINGS.favourites.filter(e => e != app.id);
@@ -213,7 +213,7 @@ function getAppHTML(app, appInstalled, forInterface) {
   let readme = `<a class="c-hand" onclick="showReadme('${app.id}')">Read more...</a>`;
   let favourite = SETTINGS.favourites.find(e => e == app.id);
   let githubLink = Const.APP_SOURCECODE_URL ?
-    `<a href="${Const.APP_SOURCECODE_URL}/${app.id}" target="_blank" class="link-github"><img src="img/github-icon-sml.png" alt="See the code on GitHub"/></a>` : "";
+    `<a href="${Const.APP_SOURCECODE_URL}/${app.id}" target="_blank" class="link-github"><img src="core/img/github-icon-sml.png" alt="See the code on GitHub"/></a>` : "";
   let appurl = window.location.origin + window.location.pathname + "#" + encodeURIComponent(app.id);
 
   let html = `<div class="tile column col-6 col-sm-12 col-xs-12">

@@ -13,8 +13,8 @@ for Noble.
 var SETTINGS = {
   pretokenise : true
 };
-var Utils = require("../js/utils.js");
-var AppInfo = require("../js/appinfo.js");
+var Utils = require("../core/js/utils.js");
+var AppInfo = require("../core/js/appinfo.js");
 var noble;
 try {
   noble  = require('@abandonware/noble');
@@ -252,7 +252,7 @@ function bangleSend(command, deviceAddress) {
       log("Found device: ",a,dev.advertisement.localName);
       if (a == DEVICEADDRESS)
         return foundDevice(dev);
-      else if (DEVICEADDRESS=="" && dev.advertisement.localName.indexOf("P8")==0) {
+      else if (DEVICEADDRESS=="" && dev.advertisement.localName.indexOf("Bangle.js")==0) {
         return foundDevice(dev);
       }
     });
