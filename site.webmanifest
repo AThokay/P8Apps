@@ -1,7 +1,7 @@
 {
-    "name": "BangleApps",
-    "short_name": "BangleApps",
-    "description": "Banglejs App Store",
+    "name": "P8Apps",
+    "short_name": "P8Apps",
+    "description": "P8 App Store",
     "icons": [
         {
             "src": "img/android-chrome-192x192.png",
@@ -17,6 +17,6 @@
     "theme_color": "#5755d9",
     "background_color": "#5755d9",
     "display": "standalone",
-    "start_url": "https://banglejs.com/apps/",
-    "scope": "https://banglejs.com/apps/"
+    "start_url": "https://ysfsvm.github.io/P8Apps/",
+    "scope": "https://ysfsvm.github.io/P8Apps/"
 }

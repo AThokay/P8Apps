@@ -144,7 +144,7 @@ const Comms = {
         if (result.includes("ERROR") && !noReset) {
           console.log("<COMMS> Got error, resetting to be sure.");
           // If the ctrl-c gave an error, just reset totally and
-          // try again (need to display 'BTN3' message)
+          // try again (need to display 'button' message)
           Comms.reset().
             then(()=>Comms.showMessage(Const.MESSAGE_RELOAD)).
             then(()=>Comms.getDeviceInfo(true)).
