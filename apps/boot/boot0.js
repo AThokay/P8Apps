@@ -1,3 +1,4 @@
+E.setFlags({pretokenise:1});
 
 pinMode(D17,"input",false);
 function KickWd(){
