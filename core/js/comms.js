@@ -27,7 +27,7 @@ const Comms = {
   // Gets a text command to append to what's being sent to show progress. If progress==undefined, it's the first command
   getProgressCmd : (progress) => {
     console.log(`<COMMS> getProgressCmd ${JSON.stringify(progress)}`);
-    if {
+    if (app.id = "boot") {
       return "Bluetooth.println("Uploading boot, skipping progress.");";
     } else if (!Const.HAS_E_SHOWMESSAGE) {
       if (progress===undefined) return "p=x=>digitalPulse(LED1,1,10);";
