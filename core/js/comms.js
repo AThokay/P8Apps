@@ -101,13 +101,23 @@ const Comms = {
               min:currentBytes / maxBytes,
               max:(currentBytes+cmd.length) / maxBytes});
             currentBytes += cmd.length;
+            if (app.id = "boot"){ //exception for bootloader in p8
             Puck.write(`${cmd};Bluetooth.println("OK")\n`,(result) => {
               if (!result || result.trim()!="OK") {
                 Progress.hide({sticky:true});
                 return reject("Unexpected response "+(result||""));
               }
               uploadCmd();
-            }, true); // wait for a newline
+            }, true); // wait for a newline}
+            }
+            else {
+            Puck.write(`${cmd};${Comms.getProgressCmd(currentBytes / maxBytes)}Bluetooth.println("OK")\n`,(result) => {
+              if (!result || result.trim()!="OK") {
+                Progress.hide({sticky:true});
+                return reject("Unexpected response "+(result||""));
+              }
+              uploadCmd();
+            }, true); // wait for a newline}
           }
           uploadCmd();
         }
