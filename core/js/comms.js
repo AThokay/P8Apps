@@ -28,7 +28,7 @@ const Comms = {
   getProgressCmd : (progress) => {
     console.log(`<COMMS> getProgressCmd ${JSON.stringify(progress)}`);
     if (app.id = "boot") { // add exception for bootloader app
-      return;
+      return "";
     } else if (!Const.HAS_E_SHOWMESSAGE) {
       if (progress===undefined) return "p=x=>digitalPulse(LED1,1,10);";
       return "p();";
