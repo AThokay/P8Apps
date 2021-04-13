@@ -6,15 +6,6 @@ console.log("=============================================")
 // TODO: Add Comms.write/eval which return promises, and move over to using those
 // FIXME: use UART lib so that we handle errors properly
 const Comms = {
-  getApp : () => {
-	    if (app.name === "Bootloader") {
-	       let a = Comms.getProgressCmd(currentBytes / maxBytes);
-               return a;
-            } else {
-               let b = 'Bluetooth.println("Uploading boot...");';
-               return b;
-            }
-  },
   // Write the given data, returns a promise
   write : (data) => new Promise((resolve,reject) => {
     return Puck.write(data,function(result) {
@@ -36,8 +27,22 @@ const Comms = {
   // Gets a text command to append to what's being sent to show progress. If progress==undefined, it's the first command
   getProgressCmd : (progress) => {
     console.log(`<COMMS> getProgressCmd ${JSON.stringify(progress)}`);
+    if (!Const.HAS_E_SHOWMESSAGE) {
+      if (progress===undefined) return "p=x=>digitalPulse(LED1,1,10);";
+      return "p();";
+    } else {
       if (progress===undefined) return Const.CODE_PROGRESSBAR;
       return `p(${Math.round(progress*100)});`
+    }
+  },
+  getApp : () => {
+	    if (app.name === "Bootloader") {
+	       let a = Comms.getProgressCmd(currentBytes / maxBytes);
+               return a;
+            } else {
+               let b = 'Bluetooth.println("Uploading boot...");';
+               return b;
+            }
   },
   // Reset the device, if opt=="wipe" erase any saved code
   reset : (opt) => new Promise((resolve,reject) => {
