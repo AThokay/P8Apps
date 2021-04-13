@@ -35,12 +35,12 @@ const Comms = {
       return `p(${Math.round(progress*100)});`
     }
   },
-  getApp : () => {
+  getApp : (app) => {
 	    if (["boot","setting"].includes(app.id)) {
-	       let a = `${Comms.getProgressCmd(currentBytes / maxBytes)};`;
+	       let a = Comms.getProgressCmd(currentBytes / maxBytes);
                return a;
             } else {
-               let b = `Bluetooth.println("Uploading boot...");`;
+               let b = Bluetooth.println("Uploading boot...");
                return b;
             }
   },
@@ -110,7 +110,7 @@ const Comms = {
               min:currentBytes / maxBytes,
               max:(currentBytes+cmd.length) / maxBytes});
             currentBytes += cmd.length;
-            Puck.write(`${cmd};${Comms.getApp}Bluetooth.println("OK")\n`,(result) => {
+            Puck.write(`${cmd};${Comms.getApp};Bluetooth.println("OK")\n`,(result) => {
               if (!result || result.trim()!="OK") {
                 Progress.hide({sticky:true});
                 return reject("Unexpected response "+(result||""));
