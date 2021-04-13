@@ -37,10 +37,10 @@ const Comms = {
   },
   getApp : () => {
 	    if (["boot","setting"].includes(app.id)) {
-	       let a = "Comms.getProgressCmd(currentBytes / maxBytes)";
+	       let a = `${Comms.getProgressCmd(currentBytes / maxBytes)};`;
                return a;
             } else {
-               let b = 'Bluetooth.println("Uploading boot...");';
+               let b = `Bluetooth.println("Uploading boot...");`;
                return b;
             }
   },
