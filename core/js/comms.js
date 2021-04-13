@@ -31,6 +31,7 @@ const Comms = {
       if (progress===undefined) return "p=x=>digitalPulse(D16,1,100);";
       return "p();";
     } else {
+      if (p===undefined) return ``;
       if (progress===undefined) return Const.CODE_PROGRESSBAR;
       return `p(${Math.round(progress*100)});`
     }
@@ -101,13 +102,6 @@ const Comms = {
               min:currentBytes / maxBytes,
               max:(currentBytes+cmd.length) / maxBytes});
             currentBytes += cmd.length;
-            if (p===undefined)             Puck.write(`${cmd};Bluetooth.println("OK")\n`,(result) => {
-              if (!result || result.trim()!="OK") {
-                Progress.hide({sticky:true});
-                return reject("Unexpected response "+(result||""));
-              }
-              uploadCmd();
-            }, true); // wait for a newline;
             Puck.write(`${cmd};${Comms.getProgressCmd(currentBytes / maxBytes)}Bluetooth.println("OK")\n`,(result) => {
               if (!result || result.trim()!="OK") {
                 Progress.hide({sticky:true});
