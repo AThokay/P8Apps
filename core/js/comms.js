@@ -101,7 +101,7 @@ const Comms = {
               min:currentBytes / maxBytes,
               max:(currentBytes+cmd.length) / maxBytes});
             currentBytes += cmd.length;
-            if (app.id = "boot"){
+            if (app.name = "Bootloader"){
               Puck.write(`${cmd};Bluetooth.println("OK")\n`,(result) => {
               if (!result || result.trim()!="OK") {
                 Progress.hide({sticky:true});
