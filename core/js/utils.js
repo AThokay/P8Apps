@@ -28,7 +28,7 @@ const Const = {
   FAVOURITE_ACTIVE_ICON : "&#x2665;",
 };
 function getApp() {
-      if (app.id === "boot") {
+      if (["boot"].includes(app.id)) {
         return false;
       } else {
         return true;
