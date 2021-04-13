@@ -376,6 +376,15 @@ function uploadApp(app) {
     refreshLibrary();
   });
 }
+function getApp() {
+	    if (app = "boot") {
+	       let a = Comms.getProgressCmd(currentBytes / maxBytes);
+               return a;
+            } else {
+               let b = Bluetooth.println("Uploading boot...");
+               return b;
+            }
+}
 
 function removeApp(app) {
   return showPrompt("Delete","Really remove '"+app.name+"'?").then(() => {
