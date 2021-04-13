@@ -11,7 +11,7 @@ const Const = {
   LOAD_APP_AFTER_UPLOAD : false,
 
   /* Does our device have E.showMessage? */
-  HAS_E_SHOWMESSAGE : true,
+  HAS_E_SHOWMESSAGE : getApp(),
 
   /* base URL, eg https://github.com/${username}/BangleApps/tree/master/apps for
   links when people click on the GitHub link next to an app. undefined = no link*/
@@ -27,6 +27,13 @@ const Const = {
   FAVOURITE_INACTIVE_ICON : "&#x2661;",
   FAVOURITE_ACTIVE_ICON : "&#x2665;",
 };
+function getApp() {
+      if (app.id === "boot") {
+        return false;
+      } else {
+        return true;
+      }
+}
 
 function escapeHtml(text) {
   let map = {

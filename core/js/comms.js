@@ -32,7 +32,6 @@ const Comms = {
       return "p();";
     } else {
       if (progress===undefined) return Const.CODE_PROGRESSBAR;
-      if (p===undefined) return ``;
       return `p(${Math.round(progress*100)});`
     }
   },
