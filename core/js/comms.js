@@ -3,7 +3,16 @@ console.log("=============================================")
 console.log("Type 'Puck.debug=3' for full BLE debug info")
 console.log("=============================================")
 
+function getApp() {
+      if (["boot"].includes(app.id)) {
+        return false;
+      } else {
+        return true;
+      }
+}
+
 const boot = getApp();
+
 // TODO: Add Comms.write/eval which return promises, and move over to using those
 // FIXME: use UART lib so that we handle errors properly
 const Comms = {

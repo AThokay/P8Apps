@@ -27,13 +27,6 @@ const Const = {
   FAVOURITE_INACTIVE_ICON : "&#x2661;",
   FAVOURITE_ACTIVE_ICON : "&#x2665;",
 };
-function getApp() {
-      if (["boot"].includes(app.id)) {
-        return false;
-      } else {
-        return true;
-      }
-}
 
 function escapeHtml(text) {
   let map = {
