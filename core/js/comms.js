@@ -3,16 +3,6 @@ console.log("=============================================")
 console.log("Type 'Puck.debug=3' for full BLE debug info")
 console.log("=============================================")
 
-function getApp() {
-      if (["boot"].includes(app.id)) {
-        return false;
-      } else {
-        return true;
-      }
-}
-
-const boot = getApp();
-
 // TODO: Add Comms.write/eval which return promises, and move over to using those
 // FIXME: use UART lib so that we handle errors properly
 const Comms = {
@@ -26,7 +16,7 @@ const Comms = {
   // Show a message on the screen (if available)
   showMessage : (txt) => {
     console.log(`<COMMS> showMessage ${JSON.stringify(txt)}`);
-    if (!boot) return Promise.resolve();
+    if (!CONST.HAS_E_SHOWMESSAGE) return Promise.resolve();
     return Comms.write(`\x10E.showMessage(${JSON.stringify(txt)})\n`);
   },
   // When upload is finished, show a message (or reload)
@@ -37,7 +27,7 @@ const Comms = {
   // Gets a text command to append to what's being sent to show progress. If progress==undefined, it's the first command
   getProgressCmd : (progress) => {
     console.log(`<COMMS> getProgressCmd ${JSON.stringify(progress)}`);
-    if (!boot) {
+    if (!CONST.HAS_E_SHOWMESSAGE) {
       if (progress===undefined) return "p=x=>digitalPulse(LED1,1,10);";
       return "p();";
     } else {
@@ -104,14 +94,24 @@ const Comms = {
           char we use to signify echo(0) for a line */
           let cmds = f.cmd.split("\x10").filter(l=>l!="").map(l=>"\x10"+l.trim());
           // Function to upload a single line and wait for an 'OK' response
+          function getApp() {
+	    if (["boot"].includes(app.id)) {
+	       let a = "Comms.getProgressCmd(currentBytes / maxBytes)";
+               return a;
+            } else {
+               let b = 'Bluetooth.println("Uploading boot...");';
+               return b;
+            }
+	  }
           function uploadCmd() {
             if (!cmds.length) return doUploadFiles();
+            let getProgress = getApp();
             let cmd = cmds.shift();
             Progress.show({
               min:currentBytes / maxBytes,
               max:(currentBytes+cmd.length) / maxBytes});
             currentBytes += cmd.length;
-            Puck.write(`${cmd};${Comms.getProgressCmd(currentBytes / maxBytes)}Bluetooth.println("OK")\n`,(result) => {
+            Puck.write(`${cmd};${getProgress}Bluetooth.println("OK")\n`,(result) => {
               if (!result || result.trim()!="OK") {
                 Progress.hide({sticky:true});
                 return reject("Unexpected response "+(result||""));
