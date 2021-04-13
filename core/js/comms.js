@@ -16,7 +16,7 @@ const Comms = {
   // Show a message on the screen (if available)
   showMessage : (txt) => {
     console.log(`<COMMS> showMessage ${JSON.stringify(txt)}`);
-    if (!CONST.HAS_E_SHOWMESSAGE) return Promise.resolve();
+    if (!Const.HAS_E_SHOWMESSAGE) return Promise.resolve();
     return Comms.write(`\x10E.showMessage(${JSON.stringify(txt)})\n`);
   },
   // When upload is finished, show a message (or reload)
@@ -27,7 +27,7 @@ const Comms = {
   // Gets a text command to append to what's being sent to show progress. If progress==undefined, it's the first command
   getProgressCmd : (progress) => {
     console.log(`<COMMS> getProgressCmd ${JSON.stringify(progress)}`);
-    if (!CONST.HAS_E_SHOWMESSAGE) {
+    if (!Const.HAS_E_SHOWMESSAGE) {
       if (progress===undefined) return "p=x=>digitalPulse(LED1,1,10);";
       return "p();";
     } else {
