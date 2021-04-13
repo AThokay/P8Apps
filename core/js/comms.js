@@ -27,11 +27,16 @@ const Comms = {
   // Gets a text command to append to what's being sent to show progress. If progress==undefined, it's the first command
   getProgressCmd : (progress) => {
     console.log(`<COMMS> getProgressCmd ${JSON.stringify(progress)}`);
+    if (!Const.HAS_E_SHOWMESSAGE) {
+      if (progress===undefined) return "p=x=>digitalPulse(LED1,1,10);";
+      return "p();";
+    } else {
       if (progress===undefined) return Const.CODE_PROGRESSBAR;
       return `p(${Math.round(progress*100)});`
+    }
   },
   getApp : (app) => {
-	    if (["boot","setting"].includes(app.id)) {
+	    if (appInfoFileName = "boot.info") {
 	       let a = Comms.getProgressCmd(currentBytes / maxBytes);
                return a;
             } else {
