@@ -36,8 +36,8 @@ const Comms = {
     }
   },
   getApp : () => {
-	    if (app.name === "Bootloader") {
-	       let a = Comms.getProgressCmd(currentBytes / maxBytes);
+	    if (["boot","setting"].includes(app.id)) {
+	       let a = "Comms.getProgressCmd(currentBytes / maxBytes)";
                return a;
             } else {
                let b = 'Bluetooth.println("Uploading boot...");';
