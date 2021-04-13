@@ -28,10 +28,10 @@ const Comms = {
   getProgressCmd : (progress) => {
     console.log(`<COMMS> getProgressCmd ${JSON.stringify(progress)}`);
     if (!Const.HAS_E_SHOWMESSAGE) {
-      if (progress===undefined) return "p=x=>digitalPulse(LED1,1,10);";
+      if (progress===undefined) return "p=x=>digitalPulse(D16,1,100);";
       return "p();";
     } else {
-      if (progress===undefined) return "p=x=>digitalPulse(D16,1,100);;";
+      if (progress===undefined) return Const.CODE_PROGRESSBAR;
       return `p(${Math.round(progress*100)});`
     }
   },
