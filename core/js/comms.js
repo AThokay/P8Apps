@@ -35,7 +35,6 @@ const Comms = {
       return `p(${Math.round(progress*100)});`
     }
   },
-
   // Reset the device, if opt=="wipe" erase any saved code
   reset : (opt) => new Promise((resolve,reject) => {
     let tries = 8;
@@ -102,7 +101,7 @@ const Comms = {
               min:currentBytes / maxBytes,
               max:(currentBytes+cmd.length) / maxBytes});
             currentBytes += cmd.length;
-            Puck.write(`${cmd};${getApp};Bluetooth.println("OK")\n`,(result) => {
+            Puck.write(`${cmd};${Comms.getProgressCmd(currentBytes / maxBytes)}Bluetooth.println("OK")\n`,(result) => {
               if (!result || result.trim()!="OK") {
                 Progress.hide({sticky:true});
                 return reject("Unexpected response "+(result||""));
@@ -145,7 +144,7 @@ const Comms = {
         if (result.includes("ERROR") && !noReset) {
           console.log("<COMMS> Got error, resetting to be sure.");
           // If the ctrl-c gave an error, just reset totally and
-          // try again (need to display 'press buttton' message)
+          // try again (need to display 'press button' message)
           Comms.reset().
             then(()=>Comms.showMessage(Const.MESSAGE_RELOAD)).
             then(()=>Comms.getDeviceInfo(true)).
