@@ -31,9 +31,9 @@ const Comms = {
       if (progress===undefined) return "p=x=>digitalPulse(D16,1,100);";
       return "p();";
     } else {
-      if (p===undefined) return ``;
+      if (p===undefined) return "p=x=>digitalPulse(D16,1,100);";
       if (progress===undefined) return Const.CODE_PROGRESSBAR;
-      return `p(${Math.round(progress*100)});`
+      return `p(${Math.round(progress*100)});`;
     }
   },
   // Reset the device, if opt=="wipe" erase any saved code
