@@ -11,11 +11,11 @@ const Const = {
   LOAD_APP_AFTER_UPLOAD : false,
 
   /* Does our device have E.showMessage? */
-  HAS_E_SHOWMESSAGE : false,
+  HAS_E_SHOWMESSAGE : true,
 
   /* base URL, eg https://github.com/${username}/BangleApps/tree/master/apps for
   links when people click on the GitHub link next to an app. undefined = no link*/
-  APP_SOURCECODE_URL : undefined,
+  APP_SOURCECODE_URL : https://github.com/${username}/P8Apps/tree/main/apps,
 
   /* Message to display when an app has been loaded */
   MESSAGE_RELOAD : 'Press button\nto reload -->',
