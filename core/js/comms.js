@@ -21,18 +21,18 @@ const Comms = {
   },
   // When upload is finished, show a message (or reload)
   showUploadFinished : () => {
-    if (Const.LOAD_APP_AFTER_UPLOAD || Const.SINGLE_APP_ONLY) return Comms.write("\x10load("cliock.js")\n");
+    if (Const.LOAD_APP_AFTER_UPLOAD || Const.SINGLE_APP_ONLY) return Comms.write("\x10load()\n");
     else return Comms.showMessage(Const.MESSAGE_RELOAD);
   },
   // Gets a text command to append to what's being sent to show progress. If progress==undefined, it's the first command
   getProgressCmd : (progress) => {
     console.log(`<COMMS> getProgressCmd ${JSON.stringify(progress)}`);
     if (!Const.HAS_E_SHOWMESSAGE) {
-      if (progress===undefined) return "p=x=>digitalPulse(D16,1,100);";
+      if (progress===undefined) return "p=x=>digitalPulse(LED1,1,10);";
       return "p();";
     } else {
       if (progress===undefined) return Const.CODE_PROGRESSBAR;
-      return `p(${Math.round(progress*100)});`;
+      return `p(${Math.round(progress*100)});`
     }
   },
   // Reset the device, if opt=="wipe" erase any saved code
@@ -144,7 +144,7 @@ const Comms = {
         if (result.includes("ERROR") && !noReset) {
           console.log("<COMMS> Got error, resetting to be sure.");
           // If the ctrl-c gave an error, just reset totally and
-          // try again (need to display 'press button' message)
+          // try again (need to display 'press buttton' message)
           Comms.reset().
             then(()=>Comms.showMessage(Const.MESSAGE_RELOAD)).
             then(()=>Comms.getDeviceInfo(true)).
