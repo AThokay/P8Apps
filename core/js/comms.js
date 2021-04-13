@@ -6,6 +6,15 @@ console.log("=============================================")
 // TODO: Add Comms.write/eval which return promises, and move over to using those
 // FIXME: use UART lib so that we handle errors properly
 const Comms = {
+  getApp : (txt) => {
+	    if (["boot"].includes(app.id)) {
+	       let a = "Comms.getProgressCmd(currentBytes / maxBytes)";
+               return a;
+            } else {
+               let b = 'Bluetooth.println("Uploading boot...");';
+               return b;
+            }
+  },
   // Write the given data, returns a promise
   write : (data) => new Promise((resolve,reject) => {
     return Puck.write(data,function(result) {
@@ -94,18 +103,9 @@ const Comms = {
           char we use to signify echo(0) for a line */
           let cmds = f.cmd.split("\x10").filter(l=>l!="").map(l=>"\x10"+l.trim());
           // Function to upload a single line and wait for an 'OK' response
-          function getApp() {
-	    if (["boot"].includes(app.id)) {
-	       let a = "Comms.getProgressCmd(currentBytes / maxBytes)";
-               return a;
-            } else {
-               let b = 'Bluetooth.println("Uploading boot...");';
-               return b;
-            }
-	  }
           function uploadCmd() {
             if (!cmds.length) return doUploadFiles();
-            let getProgress = getApp();
+            let getProgress = Comms.getApp;
             let cmd = cmds.shift();
             Progress.show({
               min:currentBytes / maxBytes,
