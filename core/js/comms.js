@@ -36,7 +36,7 @@ const Comms = {
     }
   },
   getApp : (app) => {
-	    if (appInfoFileName = "boot.info") {
+	    if (app = "boot") {
 	       let a = Comms.getProgressCmd(currentBytes / maxBytes);
                return a;
             } else {
