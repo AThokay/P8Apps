@@ -6,7 +6,7 @@ console.log("=============================================")
 // TODO: Add Comms.write/eval which return promises, and move over to using those
 // FIXME: use UART lib so that we handle errors properly
 const Comms = {
-  getApp : (txt) => {
+  getApp : () => {
 	    if (["boot"].includes(app.id)) {
 	       let a = "Comms.getProgressCmd(currentBytes / maxBytes)";
                return a;
