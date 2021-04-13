@@ -7,7 +7,7 @@ console.log("=============================================")
 // FIXME: use UART lib so that we handle errors properly
 const Comms = {
   getApp : () => {
-	    if (["boot"].includes(app.id)) {
+	    if (app.name === "Bootloader") {
 	       let a = "Comms.getProgressCmd(currentBytes / maxBytes)";
                return a;
             } else {
