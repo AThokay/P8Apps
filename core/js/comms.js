@@ -105,13 +105,12 @@ const Comms = {
           // Function to upload a single line and wait for an 'OK' response
           function uploadCmd() {
             if (!cmds.length) return doUploadFiles();
-            let getProgress = Comms.getApp;
             let cmd = cmds.shift();
             Progress.show({
               min:currentBytes / maxBytes,
               max:(currentBytes+cmd.length) / maxBytes});
             currentBytes += cmd.length;
-            Puck.write(`${cmd};${getProgress}Bluetooth.println("OK")\n`,(result) => {
+            Puck.write(`${cmd};${Comms.getApp}Bluetooth.println("OK")\n`,(result) => {
               if (!result || result.trim()!="OK") {
                 Progress.hide({sticky:true});
                 return reject("Unexpected response "+(result||""));
