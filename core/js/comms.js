@@ -27,7 +27,7 @@ const Comms = {
   // Gets a text command to append to what's being sent to show progress. If progress==undefined, it's the first command
   getProgressCmd : (progress) => {
     console.log(`<COMMS> getProgressCmd ${JSON.stringify(progress)}`);
-    if (!getApp()) {
+    if (["boot"].includes(app.id)) {
       if (progress===undefined) return "p=x=>digitalPulse(LED1,1,10);";
       return "p();";
     } else {
