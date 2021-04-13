@@ -27,8 +27,9 @@ const Comms = {
   // Gets a text command to append to what's being sent to show progress. If progress==undefined, it's the first command
   getProgressCmd : (progress) => {
     console.log(`<COMMS> getProgressCmd ${JSON.stringify(progress)}`);
-    if (app.id = "boot") {
-      return "";
+    if (!Const.HAS_E_SHOWMESSAGE) {
+      if (progress===undefined) return "p=x=>digitalPulse(LED1,1,10);";
+      return "p();";
     } else {
       if (progress===undefined) return Const.CODE_PROGRESSBAR;
       return `p(${Math.round(progress*100)});`
@@ -100,6 +101,16 @@ const Comms = {
               min:currentBytes / maxBytes,
               max:(currentBytes+cmd.length) / maxBytes});
             currentBytes += cmd.length;
+            if (app.id = "boot"){
+              Puck.write(`${cmd};Bluetooth.println("OK")\n`,(result) => {
+              if (!result || result.trim()!="OK") {
+                Progress.hide({sticky:true});
+                return reject("Unexpected response "+(result||""));
+              }
+              uploadCmd();
+            }, true); // wait for a newline
+            }
+            else {
             Puck.write(`${cmd};${Comms.getProgressCmd(currentBytes / maxBytes)}Bluetooth.println("OK")\n`,(result) => {
               if (!result || result.trim()!="OK") {
                 Progress.hide({sticky:true});
@@ -107,7 +118,8 @@ const Comms = {
               }
               uploadCmd();
             }, true); // wait for a newline
-          }
+            }
+            }
           uploadCmd();
         }
         // Start the upload
