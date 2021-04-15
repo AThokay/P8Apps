@@ -1,7 +1,11 @@
 Gadgetbridge
 =============
 
-This widget allows your Bangle.js to communicate with the Gadgetbridge app on an Android phone.
+For first time use you need to change watch name to Bangle.js.
+
+Enter this in left hand side of Espruino IDE `NRF.setAdvertising({}, { name:"Bangle.js",connectable:true });`
+
+This widget allows your P8 to communicate with the Gadgetbridge app on an Android phone.
 
 Download the [latest Gadgetbridge for Android here](https://f-droid.org/packages/nodomain.freeyourgadget.gadgetbridge/).
 
@@ -9,12 +13,7 @@ This app supports:
 
 * Displaying Notifications
 * Song display and control
-* Call answering 
-* Find My Phone / Find My Bangle
-* Activity reporting
-
-You can also add [the weather widget](https://banglejs.com/apps/#weather)
-
+* Find My Phone / Find My P8
 
 Notifications
 -------------
@@ -38,17 +37,9 @@ Go to `Settings`, `App/Widget Settings`, `Gadgetbridge`, `Find Phone`, `On`
 If in range and connected your phone should start ringing.
 
 
-Find My Bangle
+Find My P8
 -------------
 
 Onyour phone `Settings`, `App/Widget Settings`, `Gadgetbridge`, `Find Phone`, `On`
 
 If in range and connected your phone should start ringing.
-
-
-Activity reporting
-------------------
-
-You'll need a Gadgetbridge release *after* version 0.50.0 for Actvity Reporting to be enabled.
-
-By default heart rate isn't reported, but it can be enabled from `Settings`, `App/Widget Settings`, `Gadgetbridge`, `Record HRM`
