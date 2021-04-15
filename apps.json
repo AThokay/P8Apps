@@ -356,5 +356,18 @@
       {"name":"heart.app.js","url":"heart.min.js"},
       {"name":"heart.img","url":"heartrate-icon.js","evaluate":true}
     ]
+  },
+  { "id": "scolor",
+    "name": "Show Color",
+    "icon": "show-color.png",
+    "version":"0.01",
+    "description": "Display all available Colors and Names",
+    "tags": "tool",
+    "type":"app",
+    "allow_emulator":true,
+    "storage": [
+      {"name":"scolor.app.js","url":"show-color.js"},
+      {"name":"scolor.img","url":"show-color-icon.js","evaluate":true}
+    ]
   }
 ]
