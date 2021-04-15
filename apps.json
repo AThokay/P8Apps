@@ -121,10 +121,10 @@
     ]
   },
   { "id": "file",
-    "name": "Files",
+    "name": "App Manager",
     "icon": "file.png",
     "version":"0.03",
-    "description": "App and File Manager",
+    "description": "Show currently installed apps, free space, and allow their deletion from the watch",
     "tags": "tool",
     "allow_emulator":false,
     "storage": [
