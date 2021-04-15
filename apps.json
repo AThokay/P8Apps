@@ -369,5 +369,17 @@
       {"name":"scolor.app.js","url":"show-color.js"},
       {"name":"scolor.img","url":"show-color-icon.js","evaluate":true}
     ]
-  }
+  },
+  { "id": "torch",
+    "name": "Torch",
+    "icon": "torch.png",
+    "version":"0.01",
+    "description": "Turns screen white to help you see in the dark.",
+    "tags": "tool",
+    "type":"app",
+    "allow_emulator":true,
+    "storage": [
+      {"name":"torch.app.js","url":"torch.js"},
+      {"name":"torch.img","url":"torch-icon.js","evaluate":true}
+    ]
 ]
