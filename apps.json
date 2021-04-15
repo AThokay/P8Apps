@@ -382,4 +382,5 @@
       {"name":"torch.app.js","url":"torch.js"},
       {"name":"torch.img","url":"torch-icon.js","evaluate":true}
     ]
+  }
 ]
