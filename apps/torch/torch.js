@@ -1,4 +1,5 @@
 function torch(){
+        brightness(7);
 	g.reset();
 	g.fillRect(0,0,g.getWidth(),g.getHeight());
 }
