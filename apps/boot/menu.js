@@ -10,7 +10,7 @@ E.showMenu = function(items) {
     }
     if (P8.buttons) {TC.removeListener("touch",P8.buttons); P8.buttons=undefined;}
     if (!items){ flip(); return; }
-    var w = b.getWidth()-9;
+    var w = b.getWidth();
     var h = b.getHeight();
     var menuItems = Object.keys(items);
     var options = items[""];
