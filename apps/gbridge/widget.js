@@ -243,7 +243,7 @@
   }
 
   function sendBattery() {
-    gbSend({ t: "status", bat: E.getBattery() });
+    gbSend({ t: "status", bat: P8.getBattery() });
   }
 
   // Send a summary of activity to Gadgetbridge
