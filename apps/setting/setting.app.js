@@ -105,7 +105,7 @@ function showAppSettings(app) {
 }
 
 TC.on('swipe',(dir)=>{
-	if (dir == TC.DOWN) load("launch.js");
+	if (dir == TC.DOWN) storage.writeJSON("settings.json",s); load("launch.js");
 });
 
 function showMainMenu() {E.showMenu(mainmenu);};
