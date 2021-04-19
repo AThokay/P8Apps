@@ -19,6 +19,7 @@ function updateRest(now){
   writeLine(date,2);
 }
 function updateTime(){
+  if (!P8.awake()) return;
   let now = new Date();
   let h = now.getHours();
   let m = now.getMinutes();
@@ -46,12 +47,14 @@ function writeLine(str,line){
 } 
 
 TC.on('swipe',(dir)=>{
-    if (dir ==TC.RIGHT) ; 
-    else if (dir == TC.UP) load("launch.js");
+  if (dir ==TC.RIGHT) ; 
+  else if (dir == TC.UP) load("launch.js");
 });
 
-setInterval(updateTime, 1000);
-setTimeout(()=>{
-  g.clear();
-  drawAll();
-},500);
+if (P8.awake()){
+  setInterval(updateTime, 1000);
+  setTimeout(()=>{
+    g.clear();
+    drawAll();
+  },500);
+}
