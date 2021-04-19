@@ -36,3 +36,4 @@ To mitigate this risk, `boot` sets a watchdog timer and if you press the button 
 
 @gfwilliams, for [Espruino](https://www.espruino.com/) and for the Bangle App Loader used here. *If you want a hassle free watch you can program off the shelf get a Bangle.js.*
 
+@jeffmer, for [P8apps](https://github.com/jeffmer/P8Apps) drivers and main thing.
