@@ -6,7 +6,6 @@ var flag = false;
 var WeekDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
 function drawAll(){
-  if (!P8.awake()) return;
   updateTime();
   updateRest(new Date());
   P8.loadWidgets();
