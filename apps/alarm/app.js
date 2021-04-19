@@ -2,8 +2,6 @@ var STOR = require("Storage");
 eval(STOR.read("prompt.js"));
 eval(STOR.read("widgets.js"));
 eval(STOR.read("menu.js"));
-P8.loadWidgets();
-P8.drawWidgets();
 
 var alarms = require("Storage").readJSON("alarm.json",1)||[];
 /*alarms = [
@@ -44,9 +42,10 @@ function showMainMenu() {
 }
 
 function editAlarm(alarmIndex) {
+	var time = new Date();	
   var newAlarm = alarmIndex<0;
-  var hrs = 12;
-  var mins = 0;
+  var hrs = time.getHours();
+  var mins = time.getMinutes()+1; //Current date + 1 min.
   var en = true;
   var repeat = true;
   var as = false;

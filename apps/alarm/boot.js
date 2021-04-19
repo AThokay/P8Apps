@@ -1,6 +1,6 @@
 // check for alarms
 (function() {
-  var alarms = require('Storage').readJSON('alarm.json',1)||[];
+  var alarms = require("Storage").readJSON("alarm.json",1)||[];
   var time = new Date();
   var active = alarms.filter(a=>a.on);
   if (active.length) {

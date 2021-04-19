@@ -1,3 +1,6 @@
+const storage = require("Storage");
+var s = storage.readJSON("settings.json",1)
+
 E.showMenu = function(items) {
     var pal = new Uint16Array([0x0000,0x000F,0x03FF,0xFFFF]);
     var b = P8.buffer;
@@ -129,6 +132,7 @@ E.showMenu = function(items) {
       else if (isPressed(p,1)) l.select(); 
       else if (isPressed(p,2)) l.move(1);
       else selbut=-1;
+			if(s.vibrate)digitalPulse(D16,1,[30,50,30]);
     };
     l.draw();
     TC.on("touch",P8.buttons);
