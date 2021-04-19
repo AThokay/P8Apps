@@ -19,7 +19,6 @@ function updateRest(now){
   writeLine(date,2);
 }
 function updateTime(){
-  if (!P8.awake()) return;
   let now = new Date();
   let h = now.getHours();
   let m = now.getMinutes();
