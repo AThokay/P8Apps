@@ -6,6 +6,7 @@ var flag = false;
 var WeekDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
 function drawAll(){
+  if (!P8.awake()) return;
   updateTime();
   updateRest(new Date());
   P8.loadWidgets();
@@ -51,10 +52,8 @@ TC.on('swipe',(dir)=>{
   else if (dir == TC.UP) load("launch.js");
 });
 
-if (P8.awake()){
-  setInterval(updateTime, 1000);
-  setTimeout(()=>{
-    g.clear();
-    drawAll();
-  },500);
-}
+setInterval(updateTime, 1000);
+setTimeout(()=>{
+  g.clear();
+  drawAll();
+},500);
