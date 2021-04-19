@@ -57,6 +57,7 @@ function setButtons(){
     if (!SCREENACCESS.withApp) return;
     if (dir ==TC.RIGHT) newFace(1);
     else if (dir == TC.LEFT) newFace(-1);
+    else if (dir == TC.UP) load("launch.js");
   });
 }
 

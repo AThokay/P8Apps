@@ -236,6 +236,10 @@ P8.on('sleep', (b) => {
   }
 });
 
+TC.on('swipe',(dir)=>{
+    if (dir == TC.UP) load("launch.js");
+});
+
 setTimeout(()=>{
   g.clear();
   startTimers();
