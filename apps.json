@@ -43,6 +43,21 @@
     ],
     "sortorder" : -2
   },
+  { "id": "cliock",
+    "name": "Commandline-Clock",
+    "shortName":"CLI-Clock",
+    "icon": "app.png",
+    "version":"0.11",
+    "description": "Simple CLI-Styled Clock",
+    "tags": "clock,cli,command,bash,shell",
+    "type":"clock",
+    "allow_emulator":false,
+    "storage": [
+      {"name":"cliock.app.js","url":"app.js"},
+      {"name":"cliock.img","url":"app-icon.js","evaluate":true}
+    ],
+    "sortorder" : -1
+  },
   { "id": "clock",
     "name": "Clock",
     "icon": "clock.png",
@@ -60,21 +75,6 @@
       {"name":"txt.face.js","url":"txt.face.js"},
       {"name":"dk.face.js","url":"dk.face.js"},
       {"name":"clock.img","url":"clock-icon.js","evaluate":true }
-    ],
-    "sortorder" : -1
-  },
-  { "id": "cliock",
-    "name": "Commandline-Clock",
-    "shortName":"CLI-Clock",
-    "icon": "app.png",
-    "version":"0.11",
-    "description": "Simple CLI-Styled Clock",
-    "tags": "clock,cli,command,bash,shell",
-    "type":"clock",
-    "allow_emulator":false,
-    "storage": [
-      {"name":"cliock.app.js","url":"app.js"},
-      {"name":"cliock.img","url":"app-icon.js","evaluate":true}
     ],
     "sortorder" : -1
   },
