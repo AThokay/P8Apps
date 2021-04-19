@@ -1,6 +1,3 @@
-var RECOMMENDED_VERSION = "2v08";
-// could check http://www.espruino.com/json/BANGLEJS.json for this
-
 (function() {
   let username = "espruino";
   let githubMatch = window.location.href.match(/\/(\w+)\.github\.io/);
