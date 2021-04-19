@@ -367,6 +367,9 @@ TC.on("touch",(p)=> {
         buttonPress(k.toString());
 });
 
+TC.on('swipe',(dir)=>{
+	if (dir == TC.DOWN) load("launch.js");
+});
 
 function initdraw(){
   for (var k in keys) drawKey(k, keys[k], false);

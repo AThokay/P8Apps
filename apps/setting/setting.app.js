@@ -104,5 +104,9 @@ function showAppSettings(app) {
   }
 }
 
+TC.on('swipe',(dir)=>{
+	if (dir == TC.DOWN) load("launch.js");
+});
+
 function showMainMenu() {E.showMenu(mainmenu);};
 setTimeout(showMainMenu,500);

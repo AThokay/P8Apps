@@ -363,6 +363,8 @@ function stopMeasure() {
 TC.on("swipe",(dir)=>{
   if (dir==TC.RIGHT) startMeasure();
   else if (dir==TC.LEFT) stopMeasure();
+  else if (dir == TC.DOWN) load("launch.js");
+
 });
 
 E.on("kill",()=>{stopMeasure();});

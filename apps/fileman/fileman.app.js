@@ -80,5 +80,9 @@ function get_pruned_file_list() {
   return fl;
 }
 
+TC.on('swipe',(dir)=>{
+	if (dir == TC.DOWN) load("launch.js");
+});
+
 files = get_pruned_file_list();
 setTimeout(drawMenu,500);

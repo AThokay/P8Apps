@@ -178,5 +178,9 @@ TC.on("touch",(p)=> {
     else if (p.y<100) startGame();
 });
 
+TC.on('swipe',(dir)=>{
+	if (dir == TC.DOWN) load("launch.js");
+});
+
 setTimeout(startGame,500);
 

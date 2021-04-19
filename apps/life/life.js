@@ -91,6 +91,9 @@ function regen(){
   
   P8.on("sleep",(b)=>{if (b) stopdraw(); else startdraw();});
   
+TC.on('swipe',(dir)=>{
+	if (dir == TC.DOWN) load("launch.js");
+});
  
   setTimeout(()=>{
     g.clear();

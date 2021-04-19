@@ -112,4 +112,8 @@ function editAlarm(alarmIndex) {
   return E.showMenu(menu);
 }
 
+TC.on('swipe',(dir)=>{
+	if (dir == TC.DOWN) load("launch.js");
+});
+
 setTimeout(showMainMenu,500);

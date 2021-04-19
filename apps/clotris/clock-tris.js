@@ -325,6 +325,10 @@ buttons = function(p){
 TC.on("touch",buttons);
 P8.on("sleep",(b)=>{pause(b)});
 
+TC.on('swipe',(dir)=>{
+	if (dir == TC.DOWN) load("launch.js");
+});
+
 setTimeout(()=>{
   for(var i=0;i<4;i++)drawButton(butdefs[i],false);
   startGame();

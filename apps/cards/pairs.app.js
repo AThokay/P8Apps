@@ -97,6 +97,9 @@ TC.on("touch",(p)=> {
       match({R:row,C:col});
 });
 
+TC.on('swipe',(dir)=>{
+	if (dir == TC.DOWN) load("launch.js");
+});
 
 setTimeout(startGame,500);
 

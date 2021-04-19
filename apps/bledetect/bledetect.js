@@ -57,5 +57,8 @@ function waitMessage() {
   E.showMessage("scanning");
 }
 
+TC.on('swipe',(dir)=>{
+	if (dir == TC.DOWN) load("launch.js");
+});
 scan();
 waitMessage();

@@ -149,5 +149,5 @@ TC.on("swipe",(dir)=>{
       if (prevMonth === 0) date.setFullYear(date.getFullYear() + 1);
       date.setMonth(month + 1);
       drawCalendar(date);
-   }
+   }  else if (dir == TC.DOWN) load("launch.js");
 });

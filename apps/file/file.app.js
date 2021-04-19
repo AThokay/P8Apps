@@ -226,5 +226,9 @@ function sortHelper() {
   return (a, b) => (a.name > b.name) - (a.name < b.name);
 }
 
+TC.on('swipe',(dir)=>{
+	if (dir == TC.DOWN) load("launch.js");
+});
+
 setTimeout(showMainMenu,500);
 

@@ -28,7 +28,7 @@ function draw_icon(p,n,selected) {
 
 function drawPage(p){
     g.setColor(0,0,0).fillRect(0,0,239,239);
-    g.setFont("6x8",2).setFontAlign(0,-1,0).setColor(1,1,1).drawString("P8-Apps ("+(p+1)+"/"+Npages+")",120,12);
+    g.setFont("6x8",2).setFontAlign(0,-1,0).setColor(1,1,1).drawString("App Drawer ("+(p+1)+"/"+Npages+")",120,12);
     for (var i=0;i<6;i++) {
         if (!apps[p*6+i]) return i;
         draw_icon(p,i,false);
@@ -79,4 +79,4 @@ TC.on("touch",(p)=>{
     }
 });
 
-setTimeout(()=>{drawPage(0)},1000);
+setTimeout(()=>{drawPage(0)},70);
