@@ -1,5 +1,5 @@
 ![banner](https://user-images.githubusercontent.com/13920840/115140602-bc27ad00-a040-11eb-9bf7-259e3f8728b6.png)
-# P8 Espruino - Execution Environment and Apps
+# P8 App Loader (Execution Environment and Apps)
 
 The repository contains a set of Espruino Apps for the P8 Smartwatch together with drivers to support these Apps. The following video demonstrates some of these:
 
