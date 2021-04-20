@@ -20,8 +20,8 @@ E.showMenu = function(items) {
     if (options) menuItems.splice(menuItems.indexOf(""),1);
     if (!(options instanceof Object)) options = {};
     options.fontHeight=16;
-    options.x=0;
-    options.x2=w-2;
+    options.x=2;
+    options.x2=w;
     options.y=0;
     options.y2=179;
     if (options.selected === undefined)
@@ -132,7 +132,7 @@ E.showMenu = function(items) {
       else if (isPressed(p,1)) l.select(); 
       else if (isPressed(p,2)) l.move(1);
       else selbut=-1;
-			if(s.vibrate)digitalPulse(D16,1,[30,50,30]);
+      if(s.vibrate)digitalPulse(D16,1,[30,50,30]);
     };
     l.draw();
     TC.on("touch",P8.buttons);
