@@ -208,13 +208,6 @@
     if(_GB)setTimeout(_GB,0,event);
   };
 
-  TC.on("swipe", (dir) => {
-    if (state.music === "play") {
-      const command = dir > 0 ? "next" : "previous"
-      gbSend({ t: "music", n: command });
-    }
-  });
-
   function draw() {
     g.setColor(-1);
     if (NRF.getSecurityStatus().connected)
