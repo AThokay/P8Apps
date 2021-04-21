@@ -59,6 +59,16 @@ const P8 = {
             P8.FACEUP=s.faceup;
             P8.VIBRATE=(typeof s.vibrate!='undefined')?s.vibrate:true;
             E.setTimeZone(s.timezone);
+            if (s.HID) { // Human interface device
+            var p8hid;
+            if (s.HID=="joy") p8hid = E.toUint8Array(atob("BQEJBKEBCQGhAAUJGQEpBRUAJQGVBXUBgQKVA3UBgQMFAQkwCTEVgSV/dQiVAoECwMA="));
+            else if (s.HID=="kb") p8hid = E.toUint8Array(atob("BQEJBqEBBQcZ4CnnFQAlAXUBlQiBApUBdQiBAZUFdQEFCBkBKQWRApUBdQORAZUGdQgVACVzBQcZAClzgQAJBRUAJv8AdQiVArECwA=="));
+            else /*kbmedia*/p8hid = E.toUint8Array(atob("BQEJBqEBhQIFBxngKecVACUBdQGVCIEClQF1CIEBlQV1AQUIGQEpBZEClQF1A5EBlQZ1CBUAJXMFBxkAKXOBAAkFFQAm/wB1CJUCsQLABQwJAaEBhQEVACUBdQGVAQm1gQIJtoECCbeBAgm4gQIJzYECCeKBAgnpgQIJ6oECwA=="));
+            NRF.setServices({}, {uart:true, hid:p8hid});
+  }
+      else{
+      NRF.setAdvertising({}, { name:"P8",connectable:true });
+      }
     },
     sleep:() => {
         P8.awake = false;

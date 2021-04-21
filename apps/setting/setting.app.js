@@ -17,9 +17,17 @@ function dodfureboot(){
   });
 }
 
+var hidV = [false, "kbmedia", "kb", "joy"];
+var hidN = ["Off", "Kbrd & Media", "Kbrd","Joystick"];
+
 var mainmenu = {
     "" : { "title" : "Settings" },
     'App/Widget Settings': ()=>showAppSettingsMenu(),
+    "HID" :{ value: 0 | hidV.indexOf(s.HID),
+      min: 0, max: 3,
+      format: v => hidN[v],
+      onchange: v => {s.HID = hidV[v];}
+                },
     "On Time" :{ value : s.ontime,
                   min:5,max:300,step:5,
                   onchange : v => { s.ontime=v;}
@@ -49,8 +57,8 @@ var mainmenu = {
                     setTimefromPhone(mainmenu);
                   },300);
                 },
-    'Reboot to Dfu Mode': ()=>{E.showMenu(); setTimeout(dodfureboot,300)},
-    'Reboot': ()=>{E.showMenu(); setTimeout(doreboot,300)},
+    'Reboot to Dfu Mode': ()=>{E.showMenu(); setTimeout(dodfureboot,300);},
+    'Reboot': ()=>{E.showMenu(); setTimeout(doreboot,300);},
     "Exit" : function() { storage.writeJSON("settings.json",s); load("launch.js");}
 };
 
@@ -58,7 +66,7 @@ function showAppSettingsMenu() {
   let appmenu = {
     '': { 'title': 'App Settings' },
     '< Back': ()=>showMainMenu(),
-  }
+  };
   const apps = storage.list(/\.settings\.js$/)
     .map(s => s.substr(0, s.length-12))
     .map(id => {
@@ -71,25 +79,25 @@ function showAppSettingsMenu() {
       if (a.name<b.name) return -1;
       if (a.name>b.name) return 1;
       return 0;
-    })
+    });
   if (apps.length === 0) {
     appmenu['No app has settings'] = () => { };
   }
   apps.forEach(function (app) {
-    appmenu[app.name] = () => { showAppSettings(app) };
-  })
-  E.showMenu(appmenu)
+    appmenu[app.name] = () => { showAppSettings(app);};
+  });
+  E.showMenu(appmenu);
 }
 function showAppSettings(app) {
   const showError = msg => {
     E.showMessage(`${app.name}:\n${msg}!\n\nBTN1 to go back`);
     setWatch(showAppSettingsMenu, BTN1, { repeat: false });
-  }
+  };
   let appSettings = storage.read(app.id+'.settings.js');
   try {
     appSettings = eval(appSettings);
   } catch (e) {
-    console.log(`${app.name} settings error:`, e)
+    console.log(`${app.name} settings error:`, e);
     return showError('Error in settings');
   }
   if (typeof appSettings !== "function") {
@@ -99,7 +107,7 @@ function showAppSettings(app) {
     // pass showAppSettingsMenu as "back" argument
     appSettings(()=>showAppSettingsMenu());
   } catch (e) {
-    console.log(`${app.name} settings error:`, e)
+    console.log(`${app.name} settings error:`, e);
     return showError('Error in settings');
   }
 }
@@ -108,5 +116,5 @@ TC.on('swipe',(dir)=>{
 	if (dir == TC.DOWN) storage.writeJSON("settings.json",s); load("launch.js");
 });
 
-function showMainMenu() {E.showMenu(mainmenu);};
+function showMainMenu() {E.showMenu(mainmenu);}
 setTimeout(showMainMenu,500);
