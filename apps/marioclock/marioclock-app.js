@@ -8,7 +8,7 @@
  * + Images must be drawn as PNGs with transparent backgrounds
  */
 
-const locale = require("locale");
+//const locale = require("locale");
 const storage = require('Storage');
 const settings = (storage.readJSON('setting.json', 1) || {});
 const timeout = settings.timeout || 10;
